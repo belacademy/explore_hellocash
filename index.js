@@ -12,12 +12,16 @@ let db=null
 const app = express()
 app.use(function(req,res,next){
   if(db===null) {
-    db=new sqlite3.Database(path.resolve('./db/sample.db'),sqlite3.OPEN_CREATE, (err) => {
+    db=new sqlite3.Database(path.resolve('./db/sample.db'), (err) => {
       if (err) {
         console.error(err.message)
+        next(err,null)
       }
       console.log('Connected to the sample database.')
     });
+    db.serialize(function() {
+      db.run('CREATE TABLE IF NOT EXISTS log(id INTEGER  PRIMARY KEY,  data text, created_at datetime)')
+    })
   }
   next()
 })

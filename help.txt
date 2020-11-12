@@ -1,0 +1,14 @@
+To set environment variables 
+- In Windows latest versions 
+    $env:NODE_ENV="production"
+    $env:HC_PRINCIPAL="test"
+    $env:HC_CREDENTIAL="test"
+- In Windows 7 and below 
+    set NODE_ENV="production"
+    set HC_CREDENTIAL="test"
+    set HC_CREDENTIAL="test"
+
+- In Linux 
+    export NODE_ENV=production 
+    export HC_PRINCIPAL=test
+    export HC_CREDENTIAL=test
